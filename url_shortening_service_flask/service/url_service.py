@@ -10,7 +10,7 @@ class UrlService:
 
     def shorten_url(self, url_to_shorten):
         unique_id = uuid.uuid4().hex[:13]  # Generate 13 characters from UUID
-        short_id = Base62Encoder.get_encoded_id(int(unique_id, 16))
+        short_id = Base62Encoder.get_encoded_id(unique_id)
         url_mapping = UrlMapping(short_id, f"short.ly/{short_id}", url_to_shorten)
         self.user_repository.add_url_mapping(url_mapping)
         return url_mapping.url

@@ -5,7 +5,6 @@ class Base62Encoder:
     def get_encoded_id(hex_string):
         # Convert hex string to decimal
         decimal_number = int(hex_string, 16)
-
         # Encode decimal number to Base62
         base62 = []
         while decimal_number > 0:
