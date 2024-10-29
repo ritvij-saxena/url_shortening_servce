@@ -1,0 +1,2 @@
+class InvalidUrlInputException(Exception):
+    pass

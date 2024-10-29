@@ -1,24 +1,16 @@
-import uuid
+class Base62Encoder:
+    BASE62_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-BASE62_CHARSET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    @staticmethod
+    def get_encoded_id(hex_string):
+        # Convert hex string to decimal
+        decimal_number = int(hex_string, 16)
 
-def generate_short_id():
-    # Generate a random UUID, take the first 13 characters, convert to decimal, and encode to Base62
-    uuid_part = uuid.uuid4().hex[:13]  # Get the first 13 characters
-    decimal_id = int(uuid_part, 16)    # Convert hex to decimal
-    return base62_encode(decimal_id)
+        # Encode decimal number to Base62
+        base62 = []
+        while decimal_number > 0:
+            decimal_number, remainder = divmod(decimal_number, 62)
+            base62.append(Base62Encoder.BASE62_ALPHABET[remainder])
 
-def base62_encode(number):
-    # Convert a decimal number to a Base62 string
-    if number == 0:
-        return BASE62_CHARSET[0]
-
-    encoded = []
-    base = len(BASE62_CHARSET)
-
-    while number > 0:
-        remainder = number % base
-        encoded.append(BASE62_CHARSET[remainder])
-        number //= base
-
-    return ''.join(reversed(encoded))
+        # Join characters in reverse order for correct Base62 encoding
+        return ''.join(reversed(base62)) if base62 else Base62Encoder.BASE62_ALPHABET[0]
