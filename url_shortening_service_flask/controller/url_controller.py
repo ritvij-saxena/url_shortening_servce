@@ -18,12 +18,12 @@ def create_short_url():
 
     url_to_shorten = original_url if original_url else body_url
     short_url = url_service.shorten_url(url_to_shorten)
-    return jsonify({"short_url": short_url, "original_url": url_to_shorten})
+    return short_url
 
 @url_controller.route("/<string:short_url>", methods=["GET"])
 def get_actual_url(short_url):
-    original_url = url_service.get_actual_url(short_url)
-    return jsonify({"original_url": original_url})
+    actual_url = url_service.get_actual_url(short_url)
+    return actual_url
 
 @url_controller.route("/<string:short_url>/all", methods=["GET"])
 def get_all_mapping(short_url):
