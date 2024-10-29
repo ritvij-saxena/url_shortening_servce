@@ -25,7 +25,7 @@ def handle_invalid_url_input(error):
 # Global error handler for all unhandled exceptions
 @app.errorhandler(Exception)
 def handle_exception(error):
-    response = jsonify({"message": "An unexpected error occurred."})
+    response = jsonify({"message": "An unexpected error occurred.", "error": error})
     response.status_code = 500
     return response
 

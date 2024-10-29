@@ -25,4 +25,4 @@ class UrlService:
         mapping = self.user_repository.get_url_mapping(short_url)
         if not mapping:
             raise UrlNotFoundException(f"URL not found for the given ID: {short_url}")
-        return mapping.to_dict()
+        return mapping
