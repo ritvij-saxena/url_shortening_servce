@@ -19,7 +19,7 @@ class UrlService:
         url_mapping = self.user_repository.get_url_mapping(short_url)
         if not url_mapping:
             raise UrlNotFoundException(f"URL not found for the given ID: {short_url}")
-        return url_mapping.actual_url
+        return url_mapping["actual_url"]
 
     def get_mapping_data(self, short_url):
         mapping = self.user_repository.get_url_mapping(short_url)
