@@ -41,9 +41,7 @@ For a 13-character hexadecimal string:
 
 1. **Decimal Equivalent**: The maximum value of a 13-character hexadecimal string (e.g., `fffffffffffff`) is approximately $2^{52} - 1$.
 2. **Base62 Representation**: To find the length of the encoded Base62 string, we can use the formula:
-   $$
-   \text{Length} = \lceil \log_{62}(2^{52}) \rceil
-   $$
+   - $$\text{Length} = \lceil \log_{62}(2^{52}) \rceil$$
    - Calculating this, $\log_{62}(2^{52}) \approx 8.39$, so the ceiling of this is **9**.
 
 Thus, each shortened URL will be a **9-character Base62 string**, which is compact enough to be included in URLs and still provides a vast number of unique identifiers.
