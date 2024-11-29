@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
-from controller.url_controller import url_controller  # Ensure correct import based on your directory structure
+from controller.url_controller import url_controller  
 from exception.url_not_found_exception import UrlNotFoundException
-from exception.invalid_url_input_exception import InvalidUrlInputException  # Ensure correct import based on your directory structure
+from exception.invalid_url_input_exception import InvalidUrlInputException  
 
 app = Flask(__name__)
 
